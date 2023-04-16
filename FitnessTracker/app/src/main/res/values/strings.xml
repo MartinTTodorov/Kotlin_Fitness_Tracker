@@ -3,5 +3,7 @@
     <string name="step_icon_description">Step icon</string>
     <string name="sunrise_icon_description">Sunrise icon</string>
     <string name="sun_icon_description">Sun icon</string>
+    <string name="calorie_icon_description">Sun icon</string>
+    <string name="kilometer_icon_description">Sun icon</string>
 
 </resources>

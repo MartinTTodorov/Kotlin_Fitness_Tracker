@@ -15,6 +15,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var totalStepsTextView: TextView
     private lateinit var morningStepsTextView: TextView
     private lateinit var dayStepsTextView: TextView
+    private lateinit var caloriesTextView: TextView
+    private lateinit var kilometersTextView: TextView
+    private val CALORIES_PER_STEP = 0.04
+    private val KILOMETERS_PER_STEP = 0.0008
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +27,9 @@ class MainActivity : AppCompatActivity() {
         totalStepsTextView = findViewById(R.id.totalStepsTextView)
         morningStepsTextView = findViewById(R.id.morningStepsTextView)
         dayStepsTextView = findViewById(R.id.dayStepsTextView)
+        caloriesTextView = findViewById(R.id.totalCaloriesTextView)
+        kilometersTextView = findViewById(R.id.totalKilometersTextView)
         stepCounter = StepCounter(this)
-
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && checkSelfPermission(Manifest.permission.ACTIVITY_RECOGNITION) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(arrayOf(Manifest.permission.ACTIVITY_RECOGNITION), 0)
@@ -47,9 +52,14 @@ class MainActivity : AppCompatActivity() {
         val morningSteps = getMorningSteps()
         val daySteps = totalSteps - morningSteps
 
+        val calories = calculateCalories(totalSteps)
+        val kilometers = calculateKilometers(totalSteps)
+
         totalStepsTextView.text = "Total Steps: $totalSteps"
         morningStepsTextView.text = "Morning Steps: $morningSteps"
         dayStepsTextView.text = "Day Steps: $daySteps"
+        caloriesTextView.text = "Calories: ${calories.toInt()}"
+        kilometersTextView.text = String.format("Kilometers: %.2f", kilometers)
     }
 
     private fun getMorningSteps(): Int {
@@ -65,5 +75,13 @@ class MainActivity : AppCompatActivity() {
         val stepSensor = Sensor.TYPE_STEP_COUNTER
         val stepCount = stepCounter.getStepsSince(startTime, stepSensor)
         return stepCount
+    }
+
+    private fun calculateCalories(steps: Int): Double {
+        return steps * CALORIES_PER_STEP
+    }
+
+    private fun calculateKilometers(steps: Int): Double {
+        return steps * KILOMETERS_PER_STEP
     }
 }
