@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FitnessTracker</string>
+    <string name="step_icon_description">Step icon</string>
+    <string name="sunrise_icon_description">Sunrise icon</string>
+    <string name="sun_icon_description">Sun icon</string>
+
 </resources>

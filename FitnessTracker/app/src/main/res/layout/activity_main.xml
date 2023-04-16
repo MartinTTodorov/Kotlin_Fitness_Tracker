@@ -4,27 +4,83 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/dark_blue"
+    >
+
+
+    <ImageView
+        android:id="@+id/stepIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/step"
+        android:contentDescription="@string/step_icon_description"
+        android:layout_gravity="center_horizontal"/>
+
 
     <TextView
         android:id="@+id/totalStepsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:text="Total Steps: 0" />
+
+    <ProgressBar
+        android:id="@+id/dailyProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progress="0"
+        android:max="100"
+        android:layout_marginTop="16dp"
+        android:progressTint="@color/blue"
+        android:indeterminateTint="@color/gray"/>
+
+    <TextView
+        android:id="@+id/progressTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:text="0/10000 steps today"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"/>
+
+    <ImageView
+        android:id="@+id/sunriseIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/sunrise"
+        android:contentDescription="@string/sunrise_icon_description"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="32dp"/>
 
     <TextView
         android:id="@+id/morningStepsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:text="Morning Steps: 0" />
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:text="Morning Steps: 0"
+        android:layout_gravity="center_horizontal" />
+
+    <ImageView
+        android:id="@+id/sunIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/sun"
+        android:contentDescription="@string/sun_icon_description"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="32dp"/>
 
     <TextView
         android:id="@+id/dayStepsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:text="Day Steps: 0" />
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:text="Day Steps: 0"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>
